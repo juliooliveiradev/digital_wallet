@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Transações</title>
+</head>
+<body>
+    <h1>Histórico de Transações</h1>
+
+    <!-- Formulário de filtro de data -->
+    <form method="GET">
+        <label for="start_date">Data Início:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ request.GET.start_date }}">
+        
+        <label for="end_date">Data Fim:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ request.GET.end_date }}">
+        
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Transação de:</th>
+                <th>Destinatário</th>
+                <th>Valor</th>
+                <th>Data/Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.sender_or_recipient }}</td>
+                    <td>{{ transaction.other_party }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

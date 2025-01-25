@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Bem-vindo, {{ user.username }}!</h1>
+    <p>Saldo atual: R$ {{ wallet.balance|floatformat:2 }}</p>
+    <nav>
+        <a href="{% url 'add_balance' %}">Adicionar Saldo</a> |
+        <a href="{% url 'transfer_balance' %}">Transferir Saldo</a> |
+        <a href="{% url 'transaction_history' %}">Histórico de Transações</a> |
+        <a href="{% url 'logout' %}">Sair</a>
+    </nav>
+</body>
+</html>
